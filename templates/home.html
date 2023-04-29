@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/main.css" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                let model_predict_btn = $('button#model_predict');
+                model_predict_btn.on('click', (e) => {
+                    model_predict_btn.addClass("loading");
+                    $.post('/predict', {title: $('textarea#title_text').val() }, (data, status, xhr) => {
+                        console.log(xhr)
+
+                        model_predict_btn.removeClass("loading");
+                        $('#predict_res').html(data.result);
+                        $('#predict_percent').html(`${parseFloat(data.percentage) * 100}%`);
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="backdrop-block" />
+        <div id="backdrop-main-content">
+            <h1>뉴스 제목 학습 모델 결과</h1>
+            <div id="input_content">
+                <div style="margin-top: 11px; display: flex">
+                    <div style="width: 20%;">
+                        <h3>뉴스 제목</h3>
+                    </div>
+                    <div style="margin: 11px; width: 80%;">
+                        <textarea id="title_text" cols="55" rows="8" style="font-size: 18px;"></textarea>
+                    </div>
+                </div>
+
+                <div style="padding-top: 40px; margin: 0 auto; text-align: center;">
+                    <button role="button" id="model_predict" class="">
+                        <div class="loader"></div>
+                        <span>Model Predict</span>
+                    </button>
+                </div>
+
+                <hr />
+
+                <div id="result_tab" style="display: flex;">
+                    <div style="width: 20%;">
+                        <h3>예측 결과</h3>
+                    </div>
+                    <div style="width: 80%;">
+                        <div id="predict_res" class="predicts"></div>
+                        <div id="predict_percent" class="predicts"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
