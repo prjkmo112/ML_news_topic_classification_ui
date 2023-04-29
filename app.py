@@ -26,7 +26,6 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.get('/predict')
 @app.post('/predict')
 def predict():
     title = request.form['title']
@@ -57,4 +56,4 @@ def predict():
 #     return '<h2>test</h2>'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
