@@ -3,3 +3,4 @@ waitress
 pandas
 numpy
 tensorflow
+coverage
