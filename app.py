@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from waitress import serve
 import pandas as pd
 import numpy as np
 import pickle
@@ -9,10 +10,8 @@ from tensorflow.keras.models import load_model
 mutils = model_utils.modelUtils()
 
 
-# model = pickle.load(open('models/news_topic_classification_RNN.pkl', 'rb'))
-# tokenizer = pickle.load(open('models/tokenizer.pkl', 'rb'))
-model = load_model('./models/model.h5')
-with open('./models/tokenizer.pkl', 'rb') as f:
+model = load_model('./models/RNN/model.h5')
+with open('./models/RNN/tokenizer.pkl', 'rb') as f:
     tokenizer = pickle.load(f)
 
 TOPIC_DICT = ["IT과학", "경제", "사회", "생활문화", "세계", "스포츠", "정치"]
@@ -56,4 +55,5 @@ def predict():
 #     return '<h2>test</h2>'
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    # app.run(debug=False)
+    serve(app, host='0.0.0.0', port=5000)
