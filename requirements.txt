@@ -2,4 +2,5 @@ Flask
 waitress
 pandas
 numpy
+pickle
 tensorflow
