@@ -3,6 +3,7 @@ waitress
 pandas
 numpy
 tensorflow
+keras-preprocessing
 konlpy
 nltk
 coverage
