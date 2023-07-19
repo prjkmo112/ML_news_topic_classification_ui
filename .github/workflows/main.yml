@@ -37,8 +37,10 @@ jobs:
     env:
       PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
       REGION: ${{ secrets.GCP_REGION }}
+
     needs: [make_settings_run_test]
     runs-on: ubuntu-latest
+
     steps:
       - name: GCP login
         uses: google-github-actions/auth@v1
@@ -55,5 +57,5 @@ jobs:
       
       - name: Connect gcp instance
         run: |
-          gcloud compute ssh ${{ secrets.GCP_INSTANCE_NAME }}
+          gcloud compute ssh ${{ secrets.GCP_INSTANCE_NAME }} --zone=${{ env.REGION }} --project=${{ env.PROJECT_ID }}
           whoami
