@@ -54,5 +54,6 @@ jobs:
           gcloud info
       
       - name: Connect gcp instance
+        run: |
           gcloud compute ssh ${{ secrets.GCP_INSTANCE_NAME }}
           whoami
