@@ -64,10 +64,6 @@ jobs:
           gcloud config set project ${{ env.PROJECT_ID }}
           gcloud projects get-iam-policy ${{ env.PROJECT_ID }}
 
-      - name: Test Other Commands2
-        run: |
-          gcloud compute instances list
-        
       - name: Upload Folder
         run: |
           gcloud compute scp static/* templates/* models/* app.py model_utils.py utils.py \
