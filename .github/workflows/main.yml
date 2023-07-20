@@ -58,6 +58,9 @@ jobs:
       - name: Test Other Commands
         run: |
           gcloud projects list
+
+      - name: Test Other Commands2
+        run: |
           gcloud compute instances list
         
       - name: Upload Folder
