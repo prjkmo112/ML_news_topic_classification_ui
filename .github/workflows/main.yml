@@ -5,15 +5,15 @@ on:
     branches: [master]
 
 jobs:
-  # make_settings_run_test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # python 설치
-  #     - uses: actions/checkout@v2
-  #     - name: Set up python
-  #       uses: actions/setup-python@v1
-  #       with:
-  #         python-version: 3.9
+  make_settings_run_test:
+    runs-on: ubuntu-latest
+    steps:
+      # python 설치
+      - uses: actions/checkout@v2
+      - name: Set up python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
       
   #     # python 모듈 설치
   #     - name: Install python Dependencies
@@ -31,6 +31,7 @@ jobs:
 
   #     - name: test report
   #       run: coverage report
+
 
   # gcp 배포
   build_and_deploy:
