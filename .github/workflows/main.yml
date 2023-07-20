@@ -57,5 +57,5 @@ jobs:
         
       - name: Upload Folder
         run: |
-          gcloud scp static/* templates/* models/* app.py model_utils.py utils.py \
+          gcloud compute scp static/* templates/* models/* app.py model_utils.py utils.py \
           ${{ secrets.SSH_USER }}@${{ secrets.SSH_SVRNM }}:/home/src/ML_news_topic_classification --zone=${{ env.REGION }}
