@@ -45,7 +45,7 @@ jobs:
       - name: GCP login
         uses: google-github-actions/auth@v1
         with:
-          service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+          # service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
           credentials_json: ${{ secrets.GCP_SA_KEYS }}
 
       - name: Set up Cloud SDK
@@ -54,6 +54,8 @@ jobs:
       - name: Use gcloud CLI
         run: |
           gcloud info
+          gcloud projects list
+          gcloud compute instances list
         
       - name: Upload Folder
         run: |
